@@ -46,15 +46,21 @@ export function Navbar() {
           className="relative flex items-center gap-2"
         >
           <Image
-            src="/images/brand/logo.svg"
+            src="/images/brand/logo.png"
             alt="GoGreen Dry Cleaners"
             width={180}
             height={48}
             priority
-            className={cn(
-              "h-9 w-auto transition-all duration-500",
-              transparent ? "brightness-0 invert" : ""
-            )}
+            className="h-9 w-auto transition-[filter] duration-500 ease-premium"
+            style={{
+              // Over the hero: keep white (no filter).
+              // Scrolled / inner pages: colorize the white PNG to the brand green #48B11A.
+              // Filter chain: brightness(0) → black, then invert/sepia/saturate/hue-rotate
+              // re-colorize to the target green.
+              filter: transparent
+                ? "none"
+                : "brightness(0) saturate(100%) invert(54%) sepia(72%) saturate(1059%) hue-rotate(58deg) brightness(95%) contrast(91%)",
+            }}
           />
         </Link>
 
@@ -170,15 +176,15 @@ function NavLink({
       <div
         className={cn(
           "absolute left-1/2 -translate-x-1/2 top-full pt-4 min-w-[260px]",
-          "opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+          "opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 -translate-y-1 transition-all duration-500 ease-premium"
         )}
       >
-        <div className="bg-white rounded-2xl shadow-xl border border-warm-2 p-2">
+        <div className="bg-white/85 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/60 ring-1 ring-warm-2/40 p-2">
           {item.children.map((child) => (
             <Link
               key={child.label}
               href={child.href}
-              className="block px-4 py-3 rounded-xl text-sm text-text hover:bg-warm-1 hover:text-accent transition-colors duration-200"
+              className="block px-4 py-3 rounded-xl text-sm text-text hover:bg-warm-1/80 hover:text-accent transition-colors duration-200"
             >
               <div className="font-medium">{child.label}</div>
               {child.description && (

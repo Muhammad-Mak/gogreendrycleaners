@@ -13,9 +13,44 @@ export const metadata: Metadata = {
   alternates: { canonical: "/reviews" },
 };
 
+const reviewsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteConfig.url}#organization`,
+  name: siteConfig.brand,
+  url: siteConfig.url,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: siteConfig.reviews.weightedAverage,
+    reviewCount: siteConfig.reviews.totalAcrossLocations,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: testimonials.map((t) => ({
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: t.rating,
+      bestRating: 5,
+    },
+    author: { "@type": "Person", name: t.author },
+    reviewBody: t.quote,
+    ...(t.location && {
+      locationCreated: {
+        "@type": "Place",
+        name: t.location,
+      },
+    }),
+  })),
+};
+
 export default function ReviewsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
+      />
       <PageHero
         eyebrow="Client Reviews"
         title={

@@ -96,27 +96,43 @@ export default function AboutPage() {
             {founders.map((m) => (
               <article
                 key={m.slug}
-                className="bg-white rounded-2xl p-8 lg:p-10 border border-warm-2 shadow-sm"
+                className="bg-white rounded-2xl p-8 lg:p-10 border border-warm-2 shadow-sm flex flex-col"
               >
-                <div className="flex items-start gap-5 mb-6">
-                  {m.image && (
-                    <div className="relative h-20 w-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-accent/20">
-                      <Image src={m.image} alt={m.name} fill sizes="80px" className="object-cover" />
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="font-serif text-2xl text-text">{m.name}</h3>
-                    <div className="text-sm text-accent uppercase tracking-[0.18em] mt-1">{m.role}</div>
-                    {m.market && (
-                      <div className="text-xs text-text-secondary mt-1">{m.market}</div>
-                    )}
+                {m.image && (
+                  <div className="relative aspect-[7/10] rounded-2xl overflow-hidden mb-7 ring-1 ring-warm-2 max-w-[340px] w-full mx-auto">
+                    <Image
+                      src={m.image}
+                      alt={m.name}
+                      fill
+                      sizes="340px"
+                      quality={90}
+                      className="object-cover"
+                    />
                   </div>
+                )}
+                <div className="mb-5">
+                  <h3 className="font-serif text-2xl text-text">{m.name}</h3>
+                  <div className="text-sm text-accent uppercase tracking-[0.18em] mt-1">{m.role}</div>
+                  {m.market && (
+                    <div className="text-xs text-text-secondary mt-1">{m.market}</div>
+                  )}
                 </div>
-                <div className="space-y-4 text-text-secondary leading-relaxed">
+                <div className="space-y-4 text-text-secondary leading-relaxed flex-1">
                   {m.fullBio.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
                 </div>
+                {m.signature && (
+                  <div className="mt-7 pt-6 border-t border-warm-2">
+                    <Image
+                      src={m.signature}
+                      alt={`${m.name}'s signature`}
+                      width={180}
+                      height={48}
+                      className="h-10 w-auto opacity-80"
+                    />
+                  </div>
+                )}
               </article>
             ))}
           </div>
@@ -135,11 +151,25 @@ export default function AboutPage() {
             {leadership.map((m) => (
               <article
                 key={m.slug}
-                className="bg-white rounded-2xl p-7 border border-warm-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-premium"
+                className="group bg-white rounded-2xl border border-warm-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-premium overflow-hidden flex flex-col"
               >
-                <h3 className="font-serif text-xl text-text">{m.name}</h3>
-                <div className="text-xs text-accent uppercase tracking-[0.18em] mt-1.5">{m.role}</div>
-                <p className="mt-4 text-sm text-text-secondary leading-relaxed">{m.shortBio}</p>
+                {m.image && (
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Image
+                      src={m.image}
+                      alt={m.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={90}
+                      className="object-cover transition-transform duration-700 ease-premium group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="p-7 flex-1">
+                  <h3 className="font-serif text-xl text-text">{m.name}</h3>
+                  <div className="text-xs text-accent uppercase tracking-[0.18em] mt-1.5">{m.role}</div>
+                  <p className="mt-4 text-sm text-text-secondary leading-relaxed">{m.shortBio}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -150,15 +180,29 @@ export default function AboutPage() {
               {mascot.map((m) => (
                 <div
                   key={m.slug}
-                  className="max-w-2xl mx-auto bg-warm-1 rounded-2xl p-7 text-center border border-warm-2"
+                  className="max-w-3xl mx-auto bg-warm-1 rounded-2xl border border-warm-2 overflow-hidden flex flex-col sm:flex-row items-center"
                 >
-                  <div className="text-xs text-accent uppercase tracking-[0.18em]">
-                    {m.role}
+                  {m.image && (
+                    <div className="relative h-48 w-full sm:h-56 sm:w-56 flex-shrink-0">
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 224px"
+                        quality={90}
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-7 text-center sm:text-left flex-1">
+                    <div className="text-xs text-accent uppercase tracking-[0.18em]">
+                      {m.role}
+                    </div>
+                    <h3 className="font-serif text-xl text-text mt-1">{m.name}</h3>
+                    <p className="mt-3 text-sm text-text-secondary leading-relaxed italic">
+                      {m.fullBio[0]}
+                    </p>
                   </div>
-                  <h3 className="font-serif text-xl text-text mt-1">{m.name}</h3>
-                  <p className="mt-3 text-sm text-text-secondary leading-relaxed italic">
-                    {m.fullBio[0]}
-                  </p>
                 </div>
               ))}
             </div>

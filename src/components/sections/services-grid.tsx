@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "@/components/section-header";
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function ServicesGrid({
   heading = "What we do",
@@ -22,14 +23,19 @@ export function ServicesGrid({
       <div className="container">
         <SectionHeader label={heading} title={title} description={description} />
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7" data-animate>
-          {list.map((s) => {
+        <div className="mt-14 lg:pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7" data-animate>
+          {list.map((s, i) => {
             const Icon = s.icon;
+            // Stagger every middle column down for a subtle wave on desktop
+            const offset = i % 3 === 1 ? "lg:translate-y-10" : "";
             return (
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="group bg-white rounded-2xl p-8 border border-warm-2 hover:border-accent/30 transition-all duration-500 ease-premium hover:-translate-y-2 hover:shadow-xl flex flex-col"
+                className={cn(
+                  "group bg-white rounded-2xl p-8 border border-warm-2 hover:border-accent/30 transition-all duration-500 ease-premium hover:-translate-y-2 hover:shadow-xl flex flex-col",
+                  offset
+                )}
               >
                 <div className="h-14 w-14 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-500">
                   <Icon className="h-6 w-6 text-accent group-hover:text-white transition-colors duration-500" />

@@ -14,8 +14,25 @@ export type BlogPost = {
   body?: string[];
 };
 
-/** Cycles through 7 real storefront photos so blog cards have real imagery. */
-const heroImages = [
+/**
+ * Topic-matched image library. Picks the best image per blog post by
+ * matching keywords in the slug. Falls back to a rotating storefront
+ * photo for posts that don't fit a topic.
+ */
+const TOPICS = {
+  bridal: "/images/topics/bridal.jpg",
+  alterations: "/images/topics/alterations.jpg",
+  suits: "/images/topics/suits.jpg",
+  shopper: "/images/topics/personal-shopper.jpg",
+  fitting: "/images/topics/dress-fitting.jpg",
+  laundry: "/images/topics/laundry-couple.jpg",
+  questioning: "/images/topics/eco-questioning.jpg",
+  rack: "/images/topics/dry-cleaning-rack.jpg",
+  ecoFlorida: "/images/topics/eco-florida.jpg",
+  petrochem: "/images/topics/petrochemical-free.png",
+} as const;
+
+const FALLBACK_STOREFRONTS = [
   "/images/services/geotagged-1.jpg",
   "/images/services/geotagged-2.jpg",
   "/images/services/geotagged-3.jpg",
@@ -25,8 +42,24 @@ const heroImages = [
   "/images/services/geotagged-7.jpg",
 ];
 
+function pickImage(slug: string, fallbackIndex: number): string {
+  const s = slug.toLowerCase();
+  if (s.includes("wedding") || s.includes("bride") || s.includes("bridal")) return TOPICS.bridal;
+  if (s.includes("petrochemical") || s.includes("delicate-fabric")) return TOPICS.petrochem;
+  if (s.includes("business-attire") || s.includes("suits")) return TOPICS.suits;
+  if (s.includes("retail-partnership") || s.includes("fashion-retail")) return TOPICS.shopper;
+  if (s.includes("closet") || s.includes("sustainable-living") || s.includes("future-of-fashion")) return TOPICS.fitting;
+  if (s.includes("myth") || s.includes("labels") || s.includes("eco-friendly-vs-traditional")) return TOPICS.questioning;
+  if (s.includes("save-you-money") || s.includes("delivery") || s.includes("regular-dry-cleaning") || s.includes("special-event")) return TOPICS.laundry;
+  if (s.includes("florida") || s.includes("miami") || s.includes("palm-beach")) return TOPICS.ecoFlorida;
+  if (s.includes("alterations") || s.includes("dapper") || s.includes("tips-for-choosing") || s.includes("extends-life") || s.includes("freshen-up") || s.includes("5-signs")) return TOPICS.alterations;
+  if (s.includes("dry-cleaning") || s.includes("revolution") || s.includes("expands") || s.includes("connecticut") || s.includes("new-york") || s.includes("top-10")) return TOPICS.rack;
+  if (s.includes("behind-the-scenes") || s.includes("going-green") || s.includes("make-your-clothes-last")) return TOPICS.rack;
+  return FALLBACK_STOREFRONTS[fallbackIndex % FALLBACK_STOREFRONTS.length];
+}
+
 const stub = (slugs: { slug: string; title: string; excerpt: string; date: string }[]): BlogPost[] =>
-  slugs.map((p, i) => ({ ...p, image: heroImages[i % heroImages.length] }));
+  slugs.map((p, i) => ({ ...p, image: pickImage(p.slug, i) }));
 
 export const blogPosts: BlogPost[] = stub([
   {
@@ -154,12 +187,6 @@ export const blogPosts: BlogPost[] = stub([
     date: "2025-09-18",
   },
   {
-    slug: "freshen-up-your-style-the-power-of-regular-dry-cleaning-2",
-    title: "Freshen Up Your Style: The Power of Regular Dry Cleaning",
-    excerpt: "Why a regular cadence matters more than the occasional deep clean.",
-    date: "2025-09-18",
-  },
-  {
     slug: "how-can-dry-cleaning-save-you-money-and-time",
     title: "How Can Dry Cleaning Save You Money and Time?",
     excerpt: "The math on professional care versus replacement and DIY damage.",
@@ -217,36 +244,6 @@ export const blogPosts: BlogPost[] = stub([
     slug: "dapper-delicate-unveiling-the-secrets-of-expert-dry-cleaning",
     title: "Dapper & Delicate: Unveiling the Secrets of Expert Dry Cleaning",
     excerpt: "What separates a great dry cleaner from a good one.",
-    date: "2025-05-09",
-  },
-  {
-    slug: "tips-for-choosing-the-right-dry-cleaning-service-choose",
-    title: "Tips for Choosing the Right Dry Cleaning Service",
-    excerpt: "A practical buyer's guide.",
-    date: "2025-05-09",
-  },
-  {
-    slug: "how-can-dry-cleaning-save-you-money-and-time-2",
-    title: "How Can Dry Cleaning Save You Money and Time?",
-    excerpt: "The math on professional care versus replacement.",
-    date: "2025-05-09",
-  },
-  {
-    slug: "cleaning-up-our-act-the-eco-friendly-revolution-in-dry-cleaning-2",
-    title: "Cleaning Up Our Act: The Eco-Friendly Revolution in Dry Cleaning",
-    excerpt: "How an industry built on petrochemicals is rewriting itself.",
-    date: "2025-05-09",
-  },
-  {
-    slug: "dapper-delicate-unveiling-the-secrets-of-expert-dry-cleaning-2",
-    title: "Dapper & Delicate: Unveiling the Secrets of Expert Dry Cleaning",
-    excerpt: "What separates a great dry cleaner from a good one.",
-    date: "2025-05-09",
-  },
-  {
-    slug: "dry-cleaning-myths-what-you-need-to-know-services",
-    title: "Dry Cleaning Myths — What You Need to Know",
-    excerpt: "Separating fact from fiction across decades of dry-cleaning lore.",
     date: "2025-05-09",
   },
 ]);

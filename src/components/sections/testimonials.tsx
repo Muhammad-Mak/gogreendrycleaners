@@ -47,12 +47,12 @@ export function Testimonials() {
     setPage(0);
   }, [perView]);
 
-  // Auto-advance
+  // Auto-advance — only paused while the user is actively hovering the cards
   React.useEffect(() => {
     if (hover || pageCount <= 1) return;
     const id = window.setInterval(() => {
       setPage((p) => (p + 1) % pageCount);
-    }, 6500);
+    }, 7000);
     return () => window.clearInterval(id);
   }, [hover, pageCount]);
 
@@ -76,28 +76,36 @@ export function Testimonials() {
           }
         />
 
-        <div
-          className="relative mt-14"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={page}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className={cn(
-                "grid gap-6",
-                perView === 1 && "grid-cols-1",
-                perView === 2 && "grid-cols-2",
-                perView === 3 && "grid-cols-3"
-              )}
-            >
-              {pages[page]?.map((t) => <TestimonialCard key={t.id} t={t} />)}
-            </motion.div>
-          </AnimatePresence>
+        <div className="relative mt-14">
+          {/*
+            Fixed min-height stabilizes the controls below: pages of testimonials
+            have varying card heights (some quotes are short, some long). Without
+            min-height, the row size shifts and the arrows visibly jump on every
+            page change.
+          */}
+          <div
+            className="min-h-[560px] md:min-h-[480px] lg:min-h-[540px]"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={page}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className={cn(
+                  "grid gap-6 items-stretch",
+                  perView === 1 && "grid-cols-1",
+                  perView === 2 && "grid-cols-2",
+                  perView === 3 && "grid-cols-3"
+                )}
+              >
+                {pages[page]?.map((t) => <TestimonialCard key={t.id} t={t} />)}
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           {pageCount > 1 && (
             <div className="mt-10 flex items-center justify-center gap-4">

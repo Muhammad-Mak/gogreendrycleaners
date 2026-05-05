@@ -9,21 +9,22 @@ export function AboutPreview() {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Image with decorative offsets */}
-          <div className="relative reveal-left">
+          <div className="relative reveal-scale">
             <div className="absolute -bottom-6 -right-6 -z-10 h-3/4 w-3/4 bg-accent/10 rounded-2xl" />
             <div className="absolute -top-6 -left-6 -z-10 h-3/4 w-3/4 border border-accent/30 rounded-2xl" />
             <div className="relative img-zoom rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
               <Image
-                src="/images/about/storefront-1.jpg"
-                alt="Inside a GoGreen Dry Cleaners storefront"
+                src="/images/services/geotagged-3.jpg"
+                alt="Inside a GoGreen Dry Cleaners storefront — eco-friendly garment care across Florida, New York, and Connecticut"
                 fill
                 sizes="(max-width: 1024px) 100vw, 600px"
+                quality={90}
                 className="object-cover"
               />
             </div>
 
-            {/* Floating stats card */}
-            <div className="absolute -bottom-8 -right-4 lg:right-8 bg-white rounded-2xl shadow-xl p-6 max-w-[200px] border border-warm-2">
+            {/* Floating stats card — glass treatment */}
+            <div className="absolute -bottom-8 -right-4 lg:right-8 bg-white/85 backdrop-blur-xl rounded-2xl shadow-2xl p-6 max-w-[200px] border border-white/60 ring-1 ring-warm-2/40">
               <div className="font-serif text-4xl text-accent">15+</div>
               <div className="text-xs uppercase tracking-[0.18em] text-text-secondary mt-1">
                 Years of <br />Eco-Conscious Care

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Cormorant_Garamond } from "next/font/google";
+import { Playfair_Display, Cormorant_Garamond } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ScrollAnimationsProvider } from "@/components/scroll-animations-provider";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/seo/json-ld";
 import "./globals.css";
 
@@ -12,12 +14,6 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   weight: ["400", "500"],
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
   display: "swap",
 });
 
@@ -57,11 +53,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.brand,
     title: `${siteConfig.brand} — Eco-friendly Dry Cleaning & Delivery`,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/images/topics/dry-cleaning-rack.jpg",
+        width: 1200,
+        height: 630,
+        alt: "GoGreen Dry Cleaners — Eco-friendly garment care",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.brand,
     description: siteConfig.description,
+    images: ["/images/topics/dry-cleaning-rack.jpg"],
   },
   alternates: {
     canonical: "/",
@@ -70,9 +75,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${GeistSans.variable} ${cormorant.variable}`}>
       <body className="font-sans antialiased min-h-screen flex flex-col">
         <JsonLd />
+        <ScrollProgress />
         <ScrollAnimationsProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

@@ -8,12 +8,12 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark text-white/80">
+    <footer className="relative bg-mesh-dark bg-noise text-white/80 overflow-hidden">
       <div className="container py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
           <div className="lg:col-span-2">
             <Image
-              src="/images/brand/logo.svg"
+              src="/images/brand/logo.png"
               alt={siteConfig.brand}
               width={200}
               height={56}

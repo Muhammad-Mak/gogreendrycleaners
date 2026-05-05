@@ -36,14 +36,18 @@ export function Hero() {
 
   return (
     <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
-      {/* Video bg — primary */}
+      {/* Video bg — primary. Poster shows instantly so it becomes the LCP
+          element rather than a blank/dark frame. preload="metadata" defers
+          full download until autoplay actually begins. */}
       {!videoFailed && (
         <video
           src={VIDEO_SRC}
+          poster="/images/services/geotagged-1.jpg"
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           onError={() => setVideoFailed(true)}
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -86,10 +90,10 @@ export function Hero() {
       <div className="relative z-20 h-full flex items-center">
         <div className="container">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/15 text-accent-light text-xs uppercase tracking-[0.2em] backdrop-blur-sm border border-white/10">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/15 text-accent-light text-xs uppercase tracking-[0.2em] backdrop-blur-sm border border-white/10 reveal">
               Eco-Friendly · Family-Owned · Since 2010
             </span>
-            <h1 className="mt-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] text-balance">
+            <h1 className="mt-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] text-balance reveal-blur">
               Garment care, <span className="accent-text text-accent-light">considered</span>.
             </h1>
             <p className="mt-6 text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed">
@@ -108,39 +112,42 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Slide controls */}
-      <button
-        type="button"
-        onClick={prev}
-        aria-label="Previous slide"
-        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-colors duration-300"
-      >
-        <ChevronLeft className="h-5 w-5 text-white" />
-      </button>
-      <button
-        type="button"
-        onClick={next}
-        aria-label="Next slide"
-        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-colors duration-300"
-      >
-        <ChevronRight className="h-5 w-5 text-white" />
-      </button>
-
-      {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
-        {SLIDES.map((_, i) => (
+      {/* Carousel controls — only when the video isn't playing */}
+      {videoFailed && (
+        <>
           <button
-            key={i}
             type="button"
-            onClick={() => setActive(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className={cn(
-              "h-1.5 rounded-full transition-all duration-500 ease-premium",
-              i === active ? "w-8 bg-accent" : "w-3 bg-white/40 hover:bg-white/60"
-            )}
-          />
-        ))}
-      </div>
+            onClick={prev}
+            aria-label="Previous slide"
+            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-colors duration-300"
+          >
+            <ChevronLeft className="h-5 w-5 text-white" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next slide"
+            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-colors duration-300"
+          >
+            <ChevronRight className="h-5 w-5 text-white" />
+          </button>
+
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-500 ease-premium",
+                  i === active ? "w-8 bg-accent" : "w-3 bg-white/40 hover:bg-white/60"
+                )}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
       {/* Scroll indicator */}
       <div className="hidden md:flex absolute bottom-8 right-8 z-30 items-center gap-3 text-white/60">

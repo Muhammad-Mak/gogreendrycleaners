@@ -6,7 +6,9 @@ import { Check, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Button } from "@/components/ui/button";
+import { ServiceSchema } from "@/components/seo/service-schema";
 import { services } from "@/data/services";
+import { getFaqsForService } from "@/data/faq";
 
 type Params = Promise<{ slug: string }>;
 
@@ -32,9 +34,11 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
 
   const Icon = service.icon;
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const serviceFaqs = getFaqsForService(service.slug);
 
   return (
     <>
+      <ServiceSchema service={service} faqs={serviceFaqs} />
       <PageHero
         eyebrow={service.tagline}
         title={service.title}
@@ -87,6 +91,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                   alt={service.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 600px"
+                  quality={90}
                   className="object-cover"
                 />
               </div>
@@ -95,8 +100,40 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
         </div>
       </section>
 
+      {/* Service-specific FAQs */}
+      {serviceFaqs.length > 0 && (
+        <section className="bg-warm-1 py-20 lg:py-24">
+          <div className="container max-w-3xl">
+            <span className="section-label">Common Questions</span>
+            <div className="section-divider-left" aria-hidden />
+            <h2 className="font-serif text-2xl lg:text-3xl text-text leading-tight">
+              About our {service.shortTitle.toLowerCase()} service.
+            </h2>
+            <div className="mt-10 space-y-3">
+              {serviceFaqs.map((f, i) => (
+                <details
+                  key={i}
+                  className="group bg-white rounded-2xl border border-warm-2 overflow-hidden hover:border-accent/30 transition-colors duration-300"
+                >
+                  <summary className="flex items-center justify-between gap-4 cursor-pointer px-6 py-5 list-none">
+                    <h3 className="font-serif text-base text-text">{f.question}</h3>
+                    <span className="h-7 w-7 rounded-full bg-warm-1 group-hover:bg-accent group-hover:text-white text-text-secondary flex items-center justify-center transition-colors duration-300 flex-shrink-0">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-open:rotate-45">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="px-6 pb-5 text-text-secondary leading-relaxed">{f.answer}</div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Other services */}
-      <section className="bg-warm-1 py-20 lg:py-24">
+      <section className="bg-bg py-20 lg:py-24">
         <div className="container">
           <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
             <h2 className="font-serif text-2xl lg:text-3xl text-text">Explore other services</h2>

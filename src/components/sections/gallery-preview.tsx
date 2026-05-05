@@ -2,15 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-const GALLERY = [
-  "/images/services/geotagged-1.jpg",
-  "/images/services/geotagged-3.jpg",
-  "/images/about/storefront-1.jpg",
-  "/images/services/geotagged-5.jpg",
-  "/images/services/geotagged-6.jpg",
-  "/images/services/geotagged-7.jpg",
-  "/images/services/geotagged-2.jpg",
-  "/images/services/geotagged-4.jpg",
+const GALLERY: { src: string; alt: string }[] = [
+  { src: "/images/topics/dry-cleaning-rack.jpg",   alt: "Eco-friendly dry cleaning at GoGreen — racks of plastic-wrapped, freshly cleaned shirts" },
+  { src: "/images/topics/bridal.jpg",              alt: "Bridal gown preservation by GoGreen — bride with cleaned wedding dress" },
+  { src: "/images/topics/suits.jpg",               alt: "Concierge dry cleaning at GoGreen — counter handoff of a freshly cleaned suit" },
+  { src: "/images/services/geotagged-2.jpg",       alt: "Inside a GoGreen Dry Cleaners storefront — interior detail" },
+  { src: "/images/services/geotagged-5.jpg",       alt: "Inside a GoGreen Dry Cleaners storefront — process area" },
+  { src: "/images/services/geotagged-7.jpg",       alt: "Inside a GoGreen Dry Cleaners storefront — service counter" },
 ];
 
 export function GalleryPreview() {
@@ -33,20 +31,19 @@ export function GalleryPreview() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4" data-animate>
-          {GALLERY.slice(0, 8).map((src, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-5" data-animate>
+          {GALLERY.map((item) => (
             <div
-              key={src}
-              className={`img-zoom rounded-2xl overflow-hidden shadow-md ${
-                i === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
-              }`}
+              key={item.src}
+              className="img-zoom rounded-2xl overflow-hidden shadow-md aspect-[3/2]"
             >
               <div className="relative h-full w-full">
                 <Image
-                  src={src}
-                  alt={`GoGreen storefront photo ${i + 1}`}
+                  src={item.src}
+                  alt={item.alt}
                   fill
-                  sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  quality={90}
                   className="object-cover"
                 />
               </div>

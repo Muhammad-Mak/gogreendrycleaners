@@ -38,15 +38,15 @@ export function LeadCapture() {
   }
 
   return (
-    <section className="relative bg-dark text-white overflow-hidden py-24 lg:py-32">
-      {/* Soft accent glows */}
+    <section className="relative bg-mesh-dark bg-noise text-white overflow-hidden py-24 lg:py-32">
+      {/* Soft accent glows layered above the mesh */}
       <div
         aria-hidden
-        className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-accent/30 blur-3xl opacity-[0.05]"
+        className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-accent/30 blur-3xl opacity-[0.08]"
       />
       <div
         aria-hidden
-        className="absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-accent/40 blur-3xl opacity-[0.05]"
+        className="absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-accent/40 blur-3xl opacity-[0.08]"
       />
 
       <div className="container relative">
@@ -75,7 +75,7 @@ export function LeadCapture() {
           </div>
 
           <div className="reveal-right">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10">
+            <div className="bg-white/[0.07] backdrop-blur-2xl border border-white/15 ring-1 ring-white/5 rounded-2xl p-8 lg:p-10 shadow-2xl">
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="h-14 w-14 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-4">

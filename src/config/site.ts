@@ -5,7 +5,6 @@ export const siteConfig = {
   description:
     "Premium eco-friendly dry cleaning, alterations, restoration, and complimentary pickup & delivery — across 19 locations in Florida, New York, and Connecticut.",
   url: "https://gogreendrycleaners.com",
-  ogImage: "/images/og.jpg",
   email: "info@gogreendrycleaners.net",
   phones: {
     primary: "561-225-1952",

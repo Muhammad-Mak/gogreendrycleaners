@@ -7,7 +7,7 @@ export function JsonLd() {
     "@type": "Organization",
     name: siteConfig.brand,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/brand/logo.svg`,
+    logo: `${siteConfig.url}/images/brand/logo.png`,
     sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
     foundingDate: String(siteConfig.legal.incorporated),
   };

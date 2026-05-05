@@ -5,7 +5,7 @@ export function FinalCta() {
   return (
     <section className="bg-bg py-20 lg:py-28">
       <div className="container">
-        <div className="bg-warm-1 rounded-3xl px-6 sm:px-12 lg:px-20 py-16 lg:py-20 text-center max-w-5xl mx-auto border border-warm-2 reveal">
+        <div className="relative bg-mesh-warm bg-noise rounded-3xl px-6 sm:px-12 lg:px-20 py-16 lg:py-20 text-center max-w-5xl mx-auto border border-warm-2 reveal overflow-hidden">
           <span className="section-label">Ready when you are</span>
           <div className="section-divider" aria-hidden />
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-text leading-tight text-balance max-w-3xl mx-auto">

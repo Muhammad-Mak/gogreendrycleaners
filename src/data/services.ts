@@ -22,7 +22,7 @@ export const services: Service[] = [
       "A non-toxic, zero-VOC process built around liquid silicone. Effective on the toughest stains and gentle enough for the most delicate fabrics — without the petrochemical odor that traditional perc cleaning leaves behind.",
     icon: Leaf,
     features: ["Gentle on fabrics", "Zero-VOC, non-toxic", "Safe for sensitive skin"],
-    image: "/images/services/geotagged-1.jpg",
+    image: "/images/topics/dry-cleaning-rack.jpg",
   },
   {
     slug: "wet-cleaning",
@@ -44,7 +44,7 @@ export const services: Service[] = [
       "Skilled tailors trained on couture and ready-to-wear. Every garment fitted with the same precision we'd give our own.",
     icon: Scissors,
     features: ["Dress alterations", "Pant hemming", "Suit adjustments", "Zippers and buttons"],
-    image: "/images/services/geotagged-3.jpg",
+    image: "/images/topics/alterations.jpg",
   },
   {
     slug: "restoration",
@@ -55,7 +55,7 @@ export const services: Service[] = [
       "Specialized restoration for garments and textiles affected by fire, mold, and water damage. Our restoration division has been built around the kinds of pieces you can't replace.",
     icon: Flame,
     features: ["Fire and smoke damage", "Mold and mildew", "Water damage recovery"],
-    image: "/images/services/geotagged-4.jpg",
+    image: "/images/topics/petrochemical-free.png",
   },
   {
     slug: "household",
@@ -77,7 +77,7 @@ export const services: Service[] = [
       "Meticulous cleaning followed by archival-quality preservation. Because the dress is one of the few things that should last as long as the memory.",
     icon: Heart,
     features: ["Gentle cleaning for delicate fabrics", "Stain removal and fabric protection", "Archival-quality packaging"],
-    image: "/images/services/geotagged-6.jpg",
+    image: "/images/topics/bridal.jpg",
   },
   {
     slug: "pickup-delivery",
@@ -88,7 +88,7 @@ export const services: Service[] = [
       "Schedule a time, leave your garments at the door — we handle the rest. Complimentary in select areas.",
     icon: Truck,
     features: ["Easy online scheduling", "Contactless pickup", "Reliable, on-time service"],
-    image: "/images/services/geotagged-7.jpg",
+    image: "/images/topics/suits.jpg",
   },
 ];
 
