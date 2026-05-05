@@ -1,0 +1,101 @@
+{
+  "_comment": "Source URL → local path mapping. Run scripts/download-media.ps1 to populate /public/. Files marked 'skipped' are deliberately not downloaded — see notes.",
+  "source_origin": "https://gogreendrycleaners.net",
+  "downloaded": {
+    "brand": {
+      "logo": {
+        "src": "/wp-content/uploads/2025/03/Logo-with-TM-2.svg",
+        "local": "/images/brand/logo.svg",
+        "use": "Primary brand wordmark with TM"
+      },
+      "logomark": {
+        "src": "/wp-content/uploads/2025/03/Mask-group.svg",
+        "local": "/images/brand/logomark.svg",
+        "use": "Icon-only brand mark"
+      }
+    },
+    "video": {
+      "hero": {
+        "src": "/wp-content/uploads/2025/04/gogreen-video-placeholder-1.mp4",
+        "local": "/videos/hero.mp4",
+        "use": "Homepage hero background video — filename has 'placeholder' but user confirmed: keep"
+      }
+    },
+    "services": {
+      "geotagged": {
+        "src": "/wp-content/uploads/2025/12/geotagged-{1..7}.jpg",
+        "local": "/images/services/geotagged-{1..7}.jpg",
+        "count": 7,
+        "use": "Real storefront and process photos — usable for hero carousel, gallery, services detail pages"
+      }
+    },
+    "about": {
+      "storefront": { "src": "/wp-content/uploads/2025/05/IMG_9071-scaled.jpg", "local": "/images/about/storefront-1.jpg" },
+      "team_1": { "src": "/wp-content/uploads/2025/04/75.jpeg", "local": "/images/about/team-1.jpeg" },
+      "team_2": { "src": "/wp-content/uploads/2025/04/710663BE-F4B1-47C5-9D28-104D0BC6E5F8.jpeg", "local": "/images/about/team-2.jpeg" },
+      "team_3": { "src": "/wp-content/uploads/2025/04/39.jpeg", "local": "/images/about/team-3.jpeg" },
+      "collage": { "src": "/wp-content/uploads/2025/04/GG-PICS.png", "local": "/images/about/collage.png" },
+      "rectangle_182": { "src": "/wp-content/uploads/2025/04/Rectangle-182.png", "local": "/images/about/rectangle-182.png" }
+    },
+    "partners": {
+      "_note": "Third-party trademarks used as a 'trusted by' trust strip. Same usage as on the source site, so presumed authorized — but worth confirming with each brand's permissions team before launch.",
+      "brightline": { "src": "/wp-content/uploads/2025/05/Brightline_Logo.svg.png", "local": "/images/partners/brightline.png" },
+      "blt": { "src": "/wp-content/uploads/2025/05/blt.png", "local": "/images/partners/blt.png", "_note": "Filename suggests BLT (likely Loews?) — confirm partner identity" },
+      "login": { "src": "/wp-content/uploads/2025/05/loginLogo.png", "local": "/images/partners/login.png", "_note": "Filename ambiguous — confirm what 'loginLogo' represents" },
+      "greystar": { "src": "/wp-content/uploads/2025/05/greystar.png", "local": "/images/partners/greystar.png" },
+      "greater_pbc": { "src": "/wp-content/uploads/2025/05/GreaterPalmBeachCounty.png", "local": "/images/partners/greater-pbc.png" },
+      "hilton_stamford": { "src": "/wp-content/uploads/2025/05/hilton-stamford.png", "local": "/images/partners/hilton-stamford.png" },
+      "hyatt": { "src": "/wp-content/uploads/2025/05/hyatt.png", "local": "/images/partners/hyatt.png" },
+      "lincoln": { "src": "/wp-content/uploads/2025/05/lincoln.png", "local": "/images/partners/lincoln.png" },
+      "marriott": { "src": "/wp-content/uploads/2025/05/marriott.jpg", "local": "/images/partners/marriott.jpg" },
+      "pb_chamber": { "src": "/wp-content/uploads/2025/05/pbchamber-logo.png", "local": "/images/partners/pb-chamber.png" },
+      "spinnaker": { "src": "/wp-content/uploads/2025/05/spinnaker.jpg", "local": "/images/partners/spinnaker.jpg" },
+      "dramaworks": { "src": "/wp-content/uploads/2025/12/palm_beach_dramaworks_logo.jpg", "local": "/images/partners/dramaworks.jpg" }
+    }
+  },
+  "skipped": {
+    "decorative_ornaments": {
+      "_reason": "Template/UI ornaments — not content. The new design system has its own decorative shapes.",
+      "files": [
+        "/wp-content/uploads/2025/03/Group-201-1.png",
+        "/wp-content/uploads/2025/03/Group-201-2.png",
+        "/wp-content/uploads/2025/03/Group-353-1.png",
+        "/wp-content/uploads/2025/03/Group-351-1.png",
+        "/wp-content/uploads/2025/04/Group-373.svg",
+        "/wp-content/uploads/2025/03/image-18.svg",
+        "/wp-content/uploads/2025/03/image-42.png",
+        "/wp-content/uploads/2025/04/image-25.png",
+        "/wp-content/uploads/2025/03/image-17.png",
+        "/wp-content/uploads/2025/03/image-51.png",
+        "/wp-content/uploads/2025/04/ce511387a3a3c341b168e45464f42bfa-1.png",
+        "/wp-content/uploads/2025/03/9.png",
+        "/wp-content/uploads/2025/04/7.png",
+        "/wp-content/uploads/2025/03/Mask-group-6.svg",
+        "/wp-content/uploads/2025/03/Mask-group-7.svg",
+        "/wp-content/uploads/2025/03/Mask-group-8.svg"
+      ]
+    },
+    "unidentified_logos": {
+      "_reason": "Filenames are 'Unknown.png' / 'Unknown-1.png' — can't identify the brand they represent. User to either rename or replace.",
+      "files": [
+        "/wp-content/uploads/2025/05/Unknown.png",
+        "/wp-content/uploads/2025/05/Unknown-1.png"
+      ]
+    },
+    "blog_stock_thumbnails": {
+      "_reason": "Filenames strongly suggest stock photography (e.g. 'morning-bride-preparting-ceremony-scaled.jpg', 'front-view-disappointed-young-couple-talking-each-other-while-washing-clothes-white-wall'). Per user caveat: skip licensed-looking imagery and flag for replacement. Phase 1 will use a small set of brand photos (geotagged-1..7) cycled across all 35 blog posts as placeholders until proper editorial imagery is sourced.",
+      "files": [
+        "/wp-content/uploads/2025/12/undefined-2.jpg",
+        "/wp-content/uploads/2025/12/undefined-5.png",
+        "/wp-content/uploads/2025/12/ca4bb-dry_cleaners_for_suits.jpg",
+        "/wp-content/uploads/2025/12/morning-bride-preparting-ceremony-scaled.jpg",
+        "/wp-content/uploads/2025/12/personal-shopper-helping-cutomer-1.jpg",
+        "/wp-content/uploads/2025/12/beautiful-girl-trying-dress-room-1.jpg",
+        "/wp-content/uploads/2025/12/front-view-disappointed-young-couple-talking-each-other-while-washing-clothes-white-wall-1.jpg",
+        "/wp-content/uploads/2025/12/medium-shot-questioning-woman-with-clothes-1.jpg",
+        "/wp-content/uploads/2025/12/medium-shot-woman-repairing-clothes-1.jpg",
+        "/wp-content/uploads/2025/08/dry-cleaners-5.webp"
+      ]
+    }
+  }
+}

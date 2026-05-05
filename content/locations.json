@@ -1,0 +1,221 @@
+{
+  "_comment": "Per-store data extracted from /find-a-location/ + Google Maps. Ratings supplied by user 2026-05-05. Hours TODO — needs scrape from each Google Business profile (manual).",
+  "aggregate": {
+    "stores_with_ratings": 15,
+    "total_reviews": 527,
+    "weighted_average_rating": 4.3,
+    "display_copy": "500+ Google reviews across 19 locations in Florida, New York & Connecticut"
+  },
+  "regions": [
+    {
+      "state": "FL",
+      "label": "Florida",
+      "stores": [
+        {
+          "slug": "boca-raton",
+          "name": "Boca Raton",
+          "type": "van-route",
+          "address": null,
+          "phone": null,
+          "maps_url": null,
+          "rating": null,
+          "review_count": null
+        },
+        {
+          "slug": "boynton-beach",
+          "name": "Boynton Beach",
+          "type": "van-route",
+          "address": null,
+          "phone": null,
+          "maps_url": null,
+          "rating": null,
+          "review_count": null
+        },
+        {
+          "slug": "delray-beach",
+          "name": "Delray Beach",
+          "type": "storefront",
+          "address": { "street": "8918 W Atlantic Ave. #250", "city": "Delray Beach", "state": "FL", "zip": "33446" },
+          "phone": "561-808-2488",
+          "maps_url": "https://maps.app.goo.gl/uVhgmcJpvgMuiQqS8",
+          "rating": 5.0,
+          "review_count": 3
+        },
+        {
+          "slug": "jupiter",
+          "name": "Jupiter",
+          "type": "storefront",
+          "address": { "street": "5500 Military Trail #24", "city": "Jupiter", "state": "FL", "zip": "33458" },
+          "phone": "561-335-5798",
+          "maps_url": "https://maps.app.goo.gl/Q8BX94yts6EiEyw26",
+          "rating": 3.4,
+          "review_count": 59
+        },
+        {
+          "slug": "miami",
+          "name": "Miami",
+          "type": "storefront",
+          "address": { "street": "150 NW 6th St", "city": "Miami", "state": "FL", "zip": "33136" },
+          "phone": null,
+          "maps_url": "https://maps.app.goo.gl/uTZnSHW2kDhnWdpo6",
+          "rating": 4.0,
+          "review_count": 43
+        },
+        {
+          "slug": "palm-beach",
+          "name": "Palm Beach",
+          "type": "storefront",
+          "address": { "street": "367 S County Rd", "city": "Palm Beach", "state": "FL", "zip": "33480" },
+          "phone": "561-832-8832",
+          "maps_url": "https://maps.app.goo.gl/vxgPnLDgEZnvyKL57",
+          "rating": 3.7,
+          "review_count": 12
+        },
+        {
+          "slug": "palm-beach-gardens",
+          "name": "Palm Beach Gardens",
+          "type": "storefront",
+          "address": { "street": "2532 PGA Blvd", "city": "Palm Beach Gardens", "state": "FL", "zip": "33410" },
+          "phone": null,
+          "maps_url": "https://maps.app.goo.gl/XrCHktCEfaNnetUr5",
+          "rating": 4.4,
+          "review_count": 7
+        },
+        {
+          "slug": "riviera-beach",
+          "name": "Riviera Beach",
+          "type": "storefront",
+          "address": { "street": "5401 East Ave", "city": "Riviera Beach", "state": "FL", "zip": "33407" },
+          "phone": "561-557-1495",
+          "maps_url": "https://maps.app.goo.gl/B2PnYEBerzAYxZc56",
+          "rating": 3.7,
+          "review_count": 3
+        },
+        {
+          "slug": "westlake",
+          "name": "Westlake",
+          "type": "storefront",
+          "address": { "street": "4951 Seminole Pratt Whitney Rd. #1300", "city": "City of Westlake", "state": "FL", "zip": "33470" },
+          "phone": "561-216-3535",
+          "maps_url": "https://maps.app.goo.gl/WKvdQ7myPdHa5xYA7",
+          "rating": 4.9,
+          "review_count": 87
+        },
+        {
+          "slug": "west-palm-beach",
+          "name": "West Palm Beach",
+          "type": "storefront",
+          "address": { "street": "591 Evernia St., unit 271", "city": "West Palm Beach", "state": "FL", "zip": "33401" },
+          "phone": "561-225-1952",
+          "maps_url": "https://maps.app.goo.gl/PLFZD6gTYufTcvef7",
+          "rating": 3.6,
+          "review_count": 19
+        },
+        {
+          "slug": "wellington",
+          "name": "Wellington",
+          "type": "storefront",
+          "address": { "street": "4360 S State Rd 7", "city": "Wellington", "state": "FL", "zip": "33449" },
+          "phone": "561-225-1952",
+          "maps_url": null,
+          "_note": "Source site lists same Maps URL for Wellington and Westlake (likely typo). Actual Wellington Maps URL needed.",
+          "rating": null,
+          "review_count": null
+        }
+      ]
+    },
+    {
+      "state": "NY",
+      "label": "New York",
+      "stores": [
+        {
+          "slug": "brewster",
+          "name": "Brewster",
+          "type": "storefront",
+          "address": { "street": "111 Independent Way", "city": "Brewster", "state": "NY", "zip": "11509" },
+          "phone": "845-279-4116",
+          "maps_url": "https://maps.app.goo.gl/vfM3p6VS6Jw7BFuR8",
+          "_note": "Maps URL redirects to address only — no Google Business profile yet for this store.",
+          "rating": null,
+          "review_count": null
+        },
+        {
+          "slug": "cortlandt-manor",
+          "name": "Cortlandt Manor",
+          "type": "storefront",
+          "address": { "street": "1765 E Main St", "city": "Mohegan Lake", "state": "NY", "zip": "10547" },
+          "phone": "914-526-7076",
+          "maps_url": "https://maps.app.goo.gl/YsdzvsqCkSLaoLN3A",
+          "rating": 5.0,
+          "review_count": 10
+        },
+        {
+          "slug": "larchmont",
+          "name": "Larchmont",
+          "type": "storefront",
+          "address": { "street": "1163 W. Boston Post Rd", "city": "Mamaroneck", "state": "NY", "zip": "10543" },
+          "phone": "914-341-1313",
+          "maps_url": "https://maps.app.goo.gl/dvt7F3qTqbdQjN6u5",
+          "rating": 4.2,
+          "review_count": 42
+        },
+        {
+          "slug": "pelham",
+          "name": "Pelham",
+          "type": "storefront",
+          "address": { "street": "4366 Boston Post Road", "city": "Pelham", "state": "NY", "zip": "10803" },
+          "phone": "914-632-1010",
+          "maps_url": "https://maps.app.goo.gl/nVakT9HFR2zpYQcN8",
+          "rating": 4.7,
+          "review_count": 47
+        }
+      ]
+    },
+    {
+      "state": "CT",
+      "label": "Connecticut",
+      "stores": [
+        {
+          "slug": "harbor-point",
+          "name": "Harbor Point",
+          "type": "storefront",
+          "address": { "street": "80 Washington Blvd", "city": "Stamford", "state": "CT", "zip": "06902" },
+          "phone": "203-908-3123",
+          "maps_url": "https://maps.app.goo.gl/8Y3GnUYasMbyyfMx6",
+          "rating": 4.1,
+          "review_count": 59
+        },
+        {
+          "slug": "norwalk-glover",
+          "name": "Norwalk (Glover Ave)",
+          "type": "storefront",
+          "address": { "street": "150 Glover Ave, Suite A", "city": "Norwalk", "state": "CT", "zip": "06850" },
+          "phone": "203-295-8509",
+          "maps_url": "https://maps.app.goo.gl/kVGibgk5eAPNCwZa8",
+          "rating": 4.3,
+          "review_count": 17
+        },
+        {
+          "slug": "norwalk-wilson",
+          "name": "Norwalk (Wilson Ave)",
+          "type": "storefront",
+          "address": { "street": "306 Wilson Ave", "city": "Norwalk", "state": "CT", "zip": "06854" },
+          "phone": "914-774-7413",
+          "maps_url": "https://maps.app.goo.gl/RQprQCtanWVWqDhT9",
+          "rating": 5.0,
+          "review_count": 2
+        },
+        {
+          "slug": "stamford",
+          "name": "Stamford",
+          "type": "storefront",
+          "address": { "street": "711 Canal St.", "city": "Stamford", "state": "CT", "zip": "06902" },
+          "phone": "203-504-8730",
+          "maps_url": "https://maps.app.goo.gl/EADesbA2bF7ZHru39",
+          "rating": 4.5,
+          "review_count": 117
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Source palette extracted from gogreendrycleaners.net (post-2985.css)
+       Stored as HSL for Tailwind compatibility. */
+    --bg: 36 24% 97%;            /* #faf9f7 warm off-white */
+    --warm-1: 36 25% 93%;        /* #f3efe9 */
+    --warm-2: 36 22% 88%;        /* #ebe6dd */
+    --dark: 0 0% 12%;            /* #1E1E1E source dark */
+    --accent: 99 75% 40%;        /* #48B11A source primary green */
+    --accent-light: 138 31% 84%; /* #C8E3D0 source pale mint */
+    --accent-dark: 99 75% 32%;   /* #3A8E15 derived */
+    --text: 0 0% 13%;            /* #222222 source text */
+    --text-secondary: 0 0% 48%;  /* #7A7A7A source muted */
+    --border: 36 18% 86%;
+    --ring: 99 75% 40%;
+
+    --transition-premium: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--bg));
+    color: hsl(var(--text));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Anchor target offset to clear the fixed navbar */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--warm-1));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent));
+    border-radius: 9999px;
+    border: 2px solid hsl(var(--warm-1));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent-dark));
+  }
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--accent)) hsl(var(--warm-1));
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--accent));
+    color: white;
+  }
+}
+
+@layer components {
+  .accent-text {
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--accent));
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 1px;
+    background-color: hsl(var(--accent));
+    margin: 1.25rem auto;
+  }
+
+  .section-divider-left {
+    width: 60px;
+    height: 1px;
+    background-color: hsl(var(--accent));
+    margin: 1.25rem 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.875rem 1.75rem;
+    transition: all var(--transition-premium);
+  }
+
+  .img-zoom {
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+  .img-zoom img,
+  .img-zoom > * {
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .img-zoom:hover img,
+  .img-zoom:hover > * {
+    transform: scale(1.08);
+  }
+}
+
+@layer utilities {
+  /* Scroll-revealed entries — applied by useScrollAnimations hook */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s var(--transition-premium), transform 0.7s var(--transition-premium);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.7s var(--transition-premium), transform 0.7s var(--transition-premium);
+  }
+  .reveal-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.7s var(--transition-premium), transform 0.7s var(--transition-premium);
+  }
+  .reveal-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Staggered children — when [data-animate] is in view, each child fades in with a delay */
+  [data-animate] > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s var(--transition-premium), transform 0.6s var(--transition-premium);
+  }
+  [data-animate].is-visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(7) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+  [data-animate].is-visible > *:nth-child(8) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
