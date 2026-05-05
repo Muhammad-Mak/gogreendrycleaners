@@ -66,7 +66,7 @@ export const services: Service[] = [
       "Expert cleaning for the textiles that bring your home together — rugs, comforters, drapery, linens, and more.",
     icon: Home,
     features: ["Oriental and area rugs", "Comforters, duvets, linens", "Draperies and curtains"],
-    image: "/images/services/geotagged-5.jpg",
+    image: "/images/topics/household.jpg",
   },
   {
     slug: "bridal",

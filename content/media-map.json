@@ -82,6 +82,12 @@
         "/wp-content/uploads/2025/05/Unknown-1.png"
       ]
     },
+    "_externally_sourced": {
+      "_reason": "Source site has no household-themed photography. Pexels linens photo committed directly to /public.",
+      "files": {
+        "/public/images/topics/household.jpg": "https://www.pexels.com/photo/folded-linen-fabric-stack-11733651/ (Pexels free license)"
+      }
+    },
     "blog_stock_thumbnails": {
       "_reason": "Filenames strongly suggest stock photography (e.g. 'morning-bride-preparting-ceremony-scaled.jpg', 'front-view-disappointed-young-couple-talking-each-other-while-washing-clothes-white-wall'). Per user caveat: skip licensed-looking imagery and flag for replacement. Phase 1 will use a small set of brand photos (geotagged-1..7) cycled across all 35 blog posts as placeholders until proper editorial imagery is sourced.",
       "files": [
