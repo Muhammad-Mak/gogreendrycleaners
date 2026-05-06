@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,6 +7,51 @@ import { ArrowLeft } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
 import { FinalCta } from "@/components/sections/final-cta";
 import { blogPosts, getBlogPost } from "@/data/blog-posts";
+import type { BlogBodyNode } from "@/data/blog-bodies";
+
+function renderInline(text: string): ReactNode {
+  const parts = text.split(/(\*\*[^*]+?\*\*)/g);
+  return parts.map((part, i) => {
+    const m = part.match(/^\*\*(.+?)\*\*$/);
+    if (m) return <strong key={i}>{m[1]}</strong>;
+    return <span key={i}>{part}</span>;
+  });
+}
+
+function renderNode(node: BlogBodyNode, key: number) {
+  switch (node.type) {
+    case "p":
+      return <p key={key}>{renderInline(node.text)}</p>;
+    case "h2":
+      return (
+        <h2 key={key} className="font-serif text-3xl text-text mt-12 mb-4">
+          {renderInline(node.text)}
+        </h2>
+      );
+    case "h3":
+      return (
+        <h3 key={key} className="font-serif text-2xl text-text mt-10 mb-3">
+          {renderInline(node.text)}
+        </h3>
+      );
+    case "ul":
+      return (
+        <ul key={key} className="list-disc pl-6 space-y-2">
+          {node.items.map((item, i) => (
+            <li key={i}>{renderInline(item)}</li>
+          ))}
+        </ul>
+      );
+    case "ol":
+      return (
+        <ol key={key} className="list-decimal pl-6 space-y-2">
+          {node.items.map((item, i) => (
+            <li key={i}>{renderInline(item)}</li>
+          ))}
+        </ol>
+      );
+  }
+}
 
 type Params = Promise<{ slug: string }>;
 
@@ -59,15 +105,14 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         <div className="container max-w-3xl">
           <div className="prose-content text-text-secondary text-lg leading-relaxed space-y-6">
             {post.body && post.body.length > 0 ? (
-              post.body.map((p, i) => <p key={i}>{p}</p>)
+              post.body.map((node, i) => renderNode(node, i))
             ) : (
               <div className="bg-warm-1 border border-warm-2 rounded-2xl p-8 text-center">
-                <h3 className="font-serif text-xl text-text">Article body coming soon.</h3>
+                <h3 className="font-serif text-xl text-text">Full article coming soon.</h3>
                 <p className="mt-3 text-sm text-text-secondary">
-                  We're migrating articles in stages. The full text of this post will be available
-                  shortly. In the meantime, here's the original summary:
+                  Here&apos;s the summary in the meantime:
                 </p>
-                <p className="mt-5 italic text-text">"{post.excerpt}"</p>
+                <p className="mt-5 italic text-text">&ldquo;{post.excerpt}&rdquo;</p>
               </div>
             )}
           </div>

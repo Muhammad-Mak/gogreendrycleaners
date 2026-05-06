@@ -30,6 +30,20 @@ export function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  // When the user clicks "Home" or the logo while already on the home
+  // page, Next.js doesn't navigate (same route) and the page doesn't
+  // scroll. Smooth-scroll to the top instead.
+  const handleHomeClick = React.useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setMobileOpen(false);
+      }
+    },
+    [pathname]
+  );
+
   return (
     <header
       className={cn(
@@ -44,6 +58,7 @@ export function Navbar() {
           href="/"
           aria-label="GoGreen Dry Cleaners home"
           className="relative flex items-center gap-2"
+          onClick={handleHomeClick}
         >
           <Image
             src="/images/brand/logo.png"
@@ -67,7 +82,13 @@ export function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {mainNav.map((item) => (
-            <NavLink key={item.label} item={item} transparent={transparent} pathname={pathname} />
+            <NavLink
+              key={item.label}
+              item={item}
+              transparent={transparent}
+              pathname={pathname}
+              onHomeClick={handleHomeClick}
+            />
           ))}
         </nav>
 
@@ -109,7 +130,7 @@ export function Navbar() {
           >
             <nav className="container py-6 flex flex-col gap-1">
               {mainNav.map((item) => (
-                <MobileNavGroup key={item.label} item={item} />
+                <MobileNavGroup key={item.label} item={item} onHomeClick={handleHomeClick} />
               ))}
               <div className="pt-4">
                 <Button asChild variant="gold" size="lg" className="w-full">
@@ -128,10 +149,12 @@ function NavLink({
   item,
   transparent,
   pathname,
+  onHomeClick,
 }: {
   item: NavItem;
   transparent: boolean;
   pathname: string;
+  onHomeClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
@@ -139,6 +162,7 @@ function NavLink({
     return (
       <Link
         href={item.href}
+        onClick={item.href === "/" ? onHomeClick : undefined}
         className={cn(
           "relative text-sm tracking-wide transition-colors duration-300 group",
           transparent
@@ -198,11 +222,18 @@ function NavLink({
   );
 }
 
-function MobileNavGroup({ item }: { item: NavItem }) {
+function MobileNavGroup({
+  item,
+  onHomeClick,
+}: {
+  item: NavItem;
+  onHomeClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}) {
   if (!item.children) {
     return (
       <Link
         href={item.href}
+        onClick={item.href === "/" ? onHomeClick : undefined}
         className="py-3 text-base text-text hover:text-accent transition-colors duration-200"
       >
         {item.label}

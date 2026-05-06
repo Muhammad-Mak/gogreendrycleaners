@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +22,23 @@ export function Hero() {
   const [videoFailed, setVideoFailed] = React.useState(false);
   const slideCount = SLIDES.length;
 
+  // Track scroll progress through the hero so we can fade content out as
+  // it leaves the viewport. offset:[startStart, endStart] = 0 when the
+  // hero's top hits the viewport top, 1 when its bottom does.
+  const ref = React.useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  // Content fades out and drifts up over the first 60% of the scroll.
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -60]);
+  // Video stays put but scales down a touch — gives a subtle camera-out
+  // feel while the content peels off above it.
+  const mediaScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  // Scroll cue dot fades fast — it shouldn't survive past the first nudge.
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   // Auto-advance the still-image carousel that sits behind the video.
   // If the video plays, it covers the carousel — but we still rotate so
   // there's something behind in case the video errors out.
@@ -35,12 +53,13 @@ export function Hero() {
   const prev = () => setActive((i) => (i - 1 + slideCount) % slideCount);
 
   return (
-    <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
+    <section ref={ref} className="relative h-screen min-h-[640px] w-full overflow-hidden">
       {/* Video bg — primary. Poster shows instantly so it becomes the LCP
           element rather than a blank/dark frame. preload="metadata" defers
           full download until autoplay actually begins. */}
       {!videoFailed && (
-        <video
+        <motion.video
+          style={{ scale: mediaScale }}
           src={VIDEO_SRC}
           poster="/images/services/geotagged-1.jpg"
           autoPlay
@@ -87,7 +106,10 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-20 h-full flex items-center">
+      <motion.div
+        style={{ opacity: contentOpacity, y: contentY }}
+        className="relative z-20 h-full flex items-center"
+      >
         <div className="container">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/15 text-accent-light text-xs uppercase tracking-[0.2em] backdrop-blur-sm border border-white/10 reveal">
@@ -110,7 +132,7 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Carousel controls — only when the video isn't playing */}
       {videoFailed && (
@@ -149,13 +171,16 @@ export function Hero() {
         </>
       )}
 
-      {/* Scroll indicator */}
-      <div className="hidden md:flex absolute bottom-8 right-8 z-30 items-center gap-3 text-white/60">
+      {/* Scroll indicator — fades out as soon as the user starts scrolling */}
+      <motion.div
+        style={{ opacity: cueOpacity }}
+        className="hidden md:flex absolute bottom-8 right-8 z-30 items-center gap-3 text-white/60"
+      >
         <div className="h-10 w-6 rounded-full border border-white/40 flex items-start justify-center pt-1.5">
           <div className="h-1.5 w-1.5 rounded-full bg-white animate-bounce-soft" />
         </div>
         <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-      </div>
+      </motion.div>
     </section>
   );
 }

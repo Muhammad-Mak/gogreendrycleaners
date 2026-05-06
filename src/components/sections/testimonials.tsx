@@ -80,11 +80,11 @@ export function Testimonials() {
           {/*
             Fixed min-height stabilizes the controls below: pages of testimonials
             have varying card heights (some quotes are short, some long). Without
-            min-height, the row size shifts and the arrows visibly jump on every
-            page change.
+            min-height the controls visibly jump between pages. Tuned to the
+            tallest typical card so the empty gap on shorter pages stays tight.
           */}
           <div
-            className="min-h-[560px] md:min-h-[480px] lg:min-h-[540px]"
+            className="min-h-[420px] md:min-h-[360px] lg:min-h-[380px]"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
@@ -108,7 +108,7 @@ export function Testimonials() {
           </div>
 
           {pageCount > 1 && (
-            <div className="mt-10 flex items-center justify-center gap-4">
+            <div className="mt-6 flex items-center justify-center gap-4">
               <button
                 type="button"
                 onClick={prev}

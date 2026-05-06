@@ -1,3 +1,5 @@
+import { blogBodies, type BlogBodyNode } from "./blog-bodies";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -7,11 +9,9 @@ export type BlogPost = {
    * not migrated; we cycle through real GoGreen storefront photos until
    * proper editorial imagery is sourced. */
   image: string;
-  /** Body content rendered server-side. For migrated posts, the full
-   * verbatim text from the source site goes here. Posts without body
-   * content yet are listed in the index but render a placeholder body
-   * indicating the migration is in-progress. */
-  body?: string[];
+  /** Structured body — merged in by getBlogPost from src/data/blog-bodies.ts.
+   * Posts with no body still render their excerpt as a fallback card. */
+  body?: BlogBodyNode[];
 };
 
 /**
@@ -249,7 +249,10 @@ export const blogPosts: BlogPost[] = stub([
 ]);
 
 export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return undefined;
+  const body = blogBodies[slug];
+  return body ? { ...post, body } : post;
 }
 
 export function getRecentPosts(n: number): BlogPost[] {
