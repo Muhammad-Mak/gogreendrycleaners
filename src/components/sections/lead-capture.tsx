@@ -38,7 +38,7 @@ export function LeadCapture() {
   }
 
   return (
-    <section className="relative bg-mesh-dark bg-noise text-white overflow-hidden py-24 lg:py-32">
+    <section className="relative bg-mesh-dark bg-noise text-white overflow-hidden pt-14 lg:pt-20 pb-24 lg:pb-32">
       {/* Soft accent glows layered above the mesh */}
       <div
         aria-hidden

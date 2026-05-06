@@ -55,7 +55,7 @@ export const services: Service[] = [
       "Specialized restoration for garments and textiles affected by fire, mold, and water damage. Our restoration division has been built around the kinds of pieces you can't replace.",
     icon: Flame,
     features: ["Fire and smoke damage", "Mold and mildew", "Water damage recovery"],
-    image: "/images/topics/petrochemical-free.png",
+    image: "/images/topics/petrochemical-free.jpg",
   },
   {
     slug: "household",

@@ -50,3 +50,6 @@ next-env.d.ts
 .claude/
 
 .vercel
+
+# AI image upscaler binary (downloaded, not source-controlled)
+tools/

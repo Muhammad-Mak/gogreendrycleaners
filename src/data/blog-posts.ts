@@ -29,7 +29,7 @@ const TOPICS = {
   questioning: "/images/topics/eco-questioning.jpg",
   rack: "/images/topics/dry-cleaning-rack.jpg",
   ecoFlorida: "/images/topics/eco-florida.jpg",
-  petrochem: "/images/topics/petrochemical-free.png",
+  petrochem: "/images/topics/petrochemical-free.jpg",
 } as const;
 
 const FALLBACK_STOREFRONTS = [
