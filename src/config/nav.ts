@@ -36,6 +36,7 @@ export const mainNav: NavItem[] = [
       { label: "FAQ", href: "/faq" },
       { label: "Reviews", href: "/reviews" },
       { label: "Gallery", href: "/gallery" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];
