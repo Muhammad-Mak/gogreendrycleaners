@@ -122,11 +122,11 @@ export function Hero() {
               Premium eco-friendly dry cleaning, expert tailoring, and complimentary concierge
               pickup &amp; delivery — across nineteen locations in Florida, New York, and Connecticut.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild variant="gold" size="xl">
+            <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4">
+              <Button asChild variant="gold" size="xl" className="w-full sm:w-auto px-6 sm:px-10">
                 <Link href="/contact">Schedule Complimentary Pickup</Link>
               </Button>
-              <Button asChild variant="whiteOutline" size="xl">
+              <Button asChild variant="whiteOutline" size="xl" className="w-full sm:w-auto px-6 sm:px-10">
                 <Link href="/services">Explore Our Services</Link>
               </Button>
             </div>
