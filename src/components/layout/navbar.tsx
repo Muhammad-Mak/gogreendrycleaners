@@ -128,12 +128,22 @@ export function Navbar() {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="lg:hidden overflow-hidden border-t border-warm-2 bg-white"
           >
-            <nav className="container py-6 flex flex-col gap-1">
+            {/* Inner scroll: the menu can be taller than the viewport on
+                small screens (it ends with several Resources items past
+                the fold), and the parent header is position:fixed so the
+                page underneath isn't what scrolls. Capping height and
+                allowing internal scroll keeps every item reachable. */}
+            <nav className="container py-6 flex flex-col gap-1 max-h-[calc(100dvh-5rem)] overflow-y-auto">
               {mainNav.map((item) => (
-                <MobileNavGroup key={item.label} item={item} onHomeClick={handleHomeClick} />
+                <MobileNavGroup
+                  key={item.label}
+                  item={item}
+                  onHomeClick={handleHomeClick}
+                  onLinkClick={() => setMobileOpen(false)}
+                />
               ))}
               <div className="pt-4">
-                <Button asChild variant="gold" size="lg" className="w-full">
+                <Button asChild variant="gold" size="lg" className="w-full" onClick={() => setMobileOpen(false)}>
                   <Link href="/contact">Schedule Pickup</Link>
                 </Button>
               </div>
@@ -225,15 +235,25 @@ function NavLink({
 function MobileNavGroup({
   item,
   onHomeClick,
+  onLinkClick,
 }: {
   item: NavItem;
   onHomeClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  onLinkClick: () => void;
 }) {
+  // pathname-effect closes the menu on route change, but hash links
+  // (e.g. /about#story) keep the same pathname — explicit onClick
+  // ensures the menu always closes on tap.
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (item.href === "/") onHomeClick(e);
+    onLinkClick();
+  };
+
   if (!item.children) {
     return (
       <Link
         href={item.href}
-        onClick={item.href === "/" ? onHomeClick : undefined}
+        onClick={handleClick}
         className="py-3 text-base text-text hover:text-accent transition-colors duration-200"
       >
         {item.label}
@@ -251,6 +271,7 @@ function MobileNavGroup({
           <Link
             key={child.label}
             href={child.href}
+            onClick={onLinkClick}
             className="py-2 pl-3 text-base text-text-secondary hover:text-accent transition-colors duration-200"
           >
             {child.label}

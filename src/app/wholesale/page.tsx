@@ -141,18 +141,20 @@ export default function WholesalePage() {
             label="Industries We Serve"
             title="Tailored to your sector."
           />
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-4" data-animate>
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" data-animate>
             {INDUSTRIES.map((i) => {
               const Icon = i.icon;
               return (
                 <div
                   key={i.label}
-                  className="bg-white rounded-2xl p-6 border border-warm-2 flex items-center gap-4"
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-warm-2 flex items-center gap-3 sm:gap-4"
                 >
-                  <div className="h-11 w-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <Icon className="h-5 w-5 text-accent" />
                   </div>
-                  <span className="font-serif text-lg text-text">{i.label}</span>
+                  <span className="font-serif text-base sm:text-lg text-text leading-snug min-w-0 break-words">
+                    {i.label}
+                  </span>
                 </div>
               );
             })}

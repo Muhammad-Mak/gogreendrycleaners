@@ -220,6 +220,10 @@
   [data-animate].is-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
   [data-animate].is-visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
   [data-animate].is-visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: translateY(0); }
+  /* Catch-all so grids with more than 8 children (blog index, reviews
+     page, locations) don't leave items 9+ stuck at opacity 0. They
+     share the last stagger delay rather than continuing the cascade. */
+  [data-animate].is-visible > *:nth-child(n+9) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
 
   .text-balance {
     text-wrap: balance;
