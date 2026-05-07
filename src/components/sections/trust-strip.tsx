@@ -21,17 +21,17 @@ export function TrustStrip() {
       </div>
 
       <div className="mt-10 marquee-pause edge-fade-x">
-        <div className="marquee-track flex items-center gap-12 lg:gap-16 w-max">
+        <div className="marquee-track flex items-center gap-14 lg:gap-20 w-max">
           {looped.map((p, i) => (
             <div
               key={`${p.name}-${i}`}
-              className="relative h-12 w-32 sm:w-40 flex-shrink-0 transition-transform duration-300 hover:scale-105"
+              className="relative h-14 sm:h-16 lg:h-20 w-40 sm:w-48 lg:w-56 flex-shrink-0 transition-transform duration-300 hover:scale-105"
             >
               <Image
                 src={p.logo}
                 alt={p.name}
                 fill
-                sizes="160px"
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 192px, 224px"
                 className="object-contain"
               />
             </div>
