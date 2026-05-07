@@ -61,7 +61,7 @@ export default function ComparePage() {
         <div className="container">
           <SectionHeader
             label="What Sets It Apart"
-            title="Nineteen reasons it matters."
+            title="The reasons that matter."
             description="The categories where GreenEarth's approach pulls clearly ahead of the alternatives."
           />
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5" data-animate>
