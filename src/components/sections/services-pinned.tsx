@@ -65,7 +65,7 @@ export function ServicesPinned({ limit = 6 }: { limit?: number }) {
               From the suit you wear weekly to the dress you&apos;ll only wear once — every garment
               gets the same attention to detail and the same eco-conscious process.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4 items-center">
+            <div className="mt-10 flex flex-wrap gap-4 items-center justify-center lg:justify-start">
               <Button asChild variant="goldOutline" size="lg">
                 <Link href="/contact">Schedule Pickup</Link>
               </Button>

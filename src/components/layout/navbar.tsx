@@ -99,7 +99,7 @@ export function Navbar() {
             variant={transparent ? "whiteOutline" : "gold"}
             size="default"
           >
-            <Link href="/contact">Schedule Pickup</Link>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
 
@@ -144,7 +144,7 @@ export function Navbar() {
               ))}
               <div className="pt-4">
                 <Button asChild variant="gold" size="lg" className="w-full" onClick={() => setMobileOpen(false)}>
-                  <Link href="/contact">Schedule Pickup</Link>
+                  <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
             </nav>

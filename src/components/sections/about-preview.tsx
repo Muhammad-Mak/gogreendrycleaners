@@ -73,7 +73,7 @@ export function AboutPreview() {
               />
             </div>
 
-            <div className="mt-12 lg:mt-16">
+            <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
               <Button asChild variant="goldOutline" size="lg">
                 <Link href="/about">Read Our Full Story</Link>
               </Button>

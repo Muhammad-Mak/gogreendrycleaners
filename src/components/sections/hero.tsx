@@ -115,19 +115,22 @@ export function Hero() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/15 text-accent-light text-xs uppercase tracking-[0.2em] backdrop-blur-sm border border-white/10 reveal">
               Eco-Friendly · Family-Owned · Since 2010
             </span>
-            <h1 className="mt-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] text-balance reveal-blur">
-              Garment care, <span className="accent-text text-accent-light">considered</span>.
+            <h1 className="mt-6 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-[1.15] text-balance reveal-blur">
+              <span className="block font-light">
+                Eco-Friendly Dry Cleaning, Alterations &amp; Delivery Service
+              </span>
+              <span className="block font-bold accent-text text-accent-light mt-2">
+                Dry Cleaning Experts
+              </span>
             </h1>
-            <p className="mt-6 text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed">
-              Premium eco-friendly dry cleaning, expert tailoring, and complimentary concierge
-              pickup &amp; delivery — across nineteen locations in Florida, New York, and Connecticut.
-            </p>
             <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4">
-              <Button asChild variant="gold" size="xl" className="w-full sm:w-auto px-6 sm:px-10">
-                <Link href="/contact">Schedule Complimentary Pickup</Link>
-              </Button>
-              <Button asChild variant="whiteOutline" size="xl" className="w-full sm:w-auto px-6 sm:px-10">
-                <Link href="/services">Explore Our Services</Link>
+              <Button
+                asChild
+                variant="whiteOutline"
+                size="xl"
+                className="w-full sm:w-auto px-4 sm:px-10 h-auto py-3 sm:h-14 sm:py-2 whitespace-normal sm:whitespace-nowrap text-center leading-tight"
+              >
+                <Link href="/contact">Schedule Complimentary Concierge Pick Up</Link>
               </Button>
             </div>
           </div>
