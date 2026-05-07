@@ -51,7 +51,12 @@ export function useScrollAnimations(
             }
           });
         },
-        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        // threshold:0 fires as soon as any pixel of the element enters
+        // the viewport. The previous 0.12 broke long single-column
+        // mobile grids (e.g. /blog with 28 stacked posts) where the
+        // element is taller than the viewport so intersectionRatio
+        // never crosses 0.12 — meaning is-visible never gets added.
+        { threshold: 0, rootMargin: "0px 0px -10% 0px" }
       );
 
       targets.forEach((el) => observer!.observe(el));
