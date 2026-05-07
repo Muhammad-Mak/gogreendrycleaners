@@ -34,6 +34,7 @@ export const mainNav: NavItem[] = [
     children: [
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
+      { label: "How We Compare", href: "/compare" },
       { label: "Reviews", href: "/reviews" },
       { label: "Gallery", href: "/gallery" },
       { label: "Contact Us", href: "/contact" },

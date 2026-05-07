@@ -79,6 +79,7 @@ export function Footer() {
             links={[
               { label: "Blog", href: "/blog" },
               { label: "FAQ", href: "/faq" },
+              { label: "How We Compare", href: "/compare" },
               { label: "Contact Us", href: "/contact" },
               { label: "Privacy Policy", href: "/privacy" },
               { label: "Terms of Service", href: "/terms" },
